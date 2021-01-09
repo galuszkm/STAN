@@ -8,7 +8,7 @@ This app is still under development, a lot of features are not avaliable at the 
 STAN is a stand-alone C#/.NET Finite Element environment with Pre/Post Processor and Solver for 3D structural analysis.
 Main purpose is to provide user-friendly and object oriented code to develop custom algorithms, FE formulation, structures, etc.
 Obviously, it is not as fast as comercial Fortran or C++ codes (and most likely will never be).
-Although this app provides really efficient full enviroment for pre/post processing and solving boundary value problems.
+Although this app provides really efficient enviroment for pre/post processing and solving boundary value problems.
 Therefore if you are intrested only in finite element code or only in data visualisation, you may find it very usefull.\
 <br>Pre/Post Processor:</br>
   * Nastran format (.bdf) mesh import
