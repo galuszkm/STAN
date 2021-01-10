@@ -2,7 +2,7 @@
 STructural ANalyser - C#/.NET Finite Element Software\
 [Download](https://github.com/galuszkm/STAN/raw/main/bin/STAN_binary.zip) binary files and [Example](https://github.com/galuszkm/STAN/raw/main/examples/Example1.zip) to test it!
 
-This app is still under development, a lot of features are not avaliable at the moment.
+This app is still under development, a lot of features are not avaliable at the moment.\
 Documentation and code description soon!
 
 ## Introduction
