@@ -33,13 +33,14 @@
                   VerticalGridLinesBrush="#FFAEAEAE" KeyDown="Table_KeyDown" HorizontalAlignment="Left" Width="310"/>
 
         <Label Content="Type:" Width="52" FontSize="14" Margin="10,50,0,0" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top"/>
-        <ComboBox x:Name="Type_Box" FontSize="14" Height="26" Margin="72,53,0,0" SelectionChanged="Type_Box_SelectionChanged" VerticalAlignment="Top" HorizontalAlignment="Left" Width="168">
+        <ComboBox x:Name="Type_Box" FontSize="14" Height="26" Margin="80,53,0,0" SelectionChanged="Type_Box_SelectionChanged" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160">
             <ComboBoxItem Content="Boundary SPC"/>
             <ComboBoxItem Content="Point load"/>
         </ComboBox>
 
         <Label Content="Color:" Width="52" FontSize="14" Margin="10,88,0,0" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top"/>
-        <ComboBox x:Name="Color_Box" FontSize="14" Height="26" Margin="72,89,0,0" SelectedIndex="0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81" >
+        <ComboBox x:Name="Color_Box" FontSize="14" Height="26" Margin="80,89,0,0" SelectedIndex="0" 
+                  VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Padding="4,4,0,0" >
             <Rectangle Height="18" Width="53" Fill="#FF0CC513" Stroke="Black" StrokeThickness="0.5"/>
             <Rectangle Height="18" Width="53" Fill="#FF8DF591" Stroke="Black" StrokeThickness="0.5"/>
             <Rectangle Height="18" Width="53"  Stroke="Black" StrokeThickness="0.5" Fill="#FF6DE8E2"/>
@@ -54,11 +55,13 @@
         <Label Content="Name:" Width="52" FontSize="14" Margin="10,15,0,0" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top"/>
         <TextBox x:Name="Name" Height="25"   VerticalAlignment="Top"
             HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-            FontSize="14" Margin="72,15,0,0" HorizontalAlignment="Left" Width="253"/>
-        <Button  x:Name="Apply" Content="Apply" FontSize="13" Style="{DynamicResource STAN_Button}"
+            FontSize="14" Margin="80,15,0,0" HorizontalAlignment="Left" Width="245"/>
+        <Button  x:Name="Apply" Content="Apply" FontSize="14" Style="{DynamicResource STAN_Button}"
                  Margin="250,53,0,0" Click="Apply_Click" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" />
-        <Button  x:Name="Clear" Content="Clear" FontSize="13" Style="{DynamicResource STAN_Button}"
-            Margin="250,89,0,0" Click="Clear_Click" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" />
+        <Button  x:Name="Clear" Content="Clear" FontSize="14" Style="{DynamicResource STAN_Button}"
+            Margin="165,89,0,0" Click="Clear_Click" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" />
+        <Button  x:Name="Remove" Content="Remove" FontSize="14" Style="{DynamicResource STAN_Button}"
+            Margin="250,89,0,0" Click="Remove_Click" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" />
     </Grid>
     <UserControl.Resources>
         <Style x:Key="FocusVisual">

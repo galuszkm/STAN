@@ -17,6 +17,7 @@ namespace STAN_PrePost
     {
         BoundaryCondition BC { get; }
         Database DB { get; }
+        TreeViewItem TreeBC { get; }
         TreeViewItem TreeItem { get; }
         RenderInterface iRen { get; }
         double ArrowScale { get; }
@@ -24,7 +25,7 @@ namespace STAN_PrePost
 
         int Step;   // Current selected analysis Step
 
-        public BOX_BC(BoundaryCondition bc, Database db, TreeView Tree, RenderInterface iren, double arrowScale, int step)
+        public BOX_BC(BoundaryCondition bc, Database db, TreeView tree, RenderInterface iren, double arrowScale, int step)
         {
             InitializeComponent();
             VerticalAlignment = VerticalAlignment.Stretch;
@@ -37,7 +38,7 @@ namespace STAN_PrePost
             Step = step;
 
             // Define BC TreeView item
-            TreeViewItem TreeBC = (TreeViewItem)Tree.Items[2];
+            TreeBC = (TreeViewItem)tree.Items[2];
             if (TreeBC.Items != null)
             {
                 foreach (TreeViewItem i in TreeBC.Items)
@@ -203,6 +204,25 @@ namespace STAN_PrePost
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             Table.Items.Clear();
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            // Remove BC from Database
+            DB.BCLib.Remove(BC.ID);
+
+            // Remove BC from TreeView
+            if (TreeBC.Items != null)
+            {
+                foreach (TreeViewItem i in TreeBC.Items)
+                {
+                    if (i.Header.ToString().Contains("BC ID " + BC.ID + ":"))
+                    {
+                        TreeBC.Items.Remove(i);
+                        break;
+                    }
+                }
+            }
         }
 
         private void Paste_Click(object sender, RoutedEventArgs e)

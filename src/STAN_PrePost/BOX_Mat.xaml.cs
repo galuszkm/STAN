@@ -11,21 +11,24 @@ namespace STAN_PrePost
     public partial class BOX_Mat : UserControl
     {
         Material Mat { get; }
+        Database DB { get; }
+        TreeViewItem TreeMat { get; }
         TreeViewItem TreeItem { get; }
 
 
         readonly Functions Fun = new Functions();
 
-        public BOX_Mat(Material mat, TreeView Tree)
+        public BOX_Mat(Material mat, Database db, TreeView Tree)
         {
             InitializeComponent();
             VerticalAlignment = VerticalAlignment.Stretch;
             HorizontalAlignment = HorizontalAlignment.Stretch;
 
+            DB = db;
             Mat = mat;
 
             // Define Mat TreeView item
-            TreeViewItem TreeMat = (TreeViewItem)Tree.Items[1];
+            TreeMat = (TreeViewItem)Tree.Items[1];
             if (TreeMat.Items != null)
             {
                 foreach (TreeViewItem i in TreeMat.Items)
@@ -84,5 +87,32 @@ namespace STAN_PrePost
 
         }
 
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            // Remove Material from Database
+            DB.MatLib.Remove(Mat.ID);
+
+            // Remove Material from Parts
+            foreach (Part p in DB.PartLib.Values)
+            {
+                if(p.Get_MatID() == Mat.ID)
+                {
+                    p.Set_MatID(0, DB);
+                }
+            }
+
+            // Remove BC from TreeView
+            if (TreeMat.Items != null)
+            {
+                foreach (TreeViewItem i in TreeMat.Items)
+                {
+                    if (i.Header.ToString().Contains("Mat ID " + Mat.ID + ":"))
+                    {
+                        TreeMat.Items.Remove(i);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

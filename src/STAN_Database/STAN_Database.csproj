@@ -13,6 +13,7 @@
     <PackageReference Include="Activiz.NET.x64" Version="5.8.0" />
     <PackageReference Include="MathNet.Numerics" Version="4.12.0" />
     <PackageReference Include="protobuf-net" Version="3.0.73" />
+    <PackageReference Include="System.Collections.Immutable" Version="5.0.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0" />
   </ItemGroup>
 

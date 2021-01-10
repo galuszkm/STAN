@@ -390,7 +390,15 @@ namespace STAN_PrePost
             PropertyBox.Children.Clear();
 
             //Create new Material
-            Material NewMat = new Material(DB.MatLib.Count + 1) { Name = "New Material" };
+            Material NewMat;
+            if (DB.MatLib.Count != 0)
+            {
+                NewMat = new Material(DB.MatLib.Last().Value.ID + 1) { Name = "New Material" };
+            }
+            else
+            {
+                NewMat = new Material(1) { Name = "New Material" };
+            }
             DB.MatLib.Add(NewMat.ID, NewMat);
 
             // Add Material to TreeView
@@ -409,7 +417,16 @@ namespace STAN_PrePost
             PropertyBox.Children.Clear();
 
             // Create new BC, add to Database and Viewport
-            BoundaryCondition NewBC = new BoundaryCondition("New Boundary Condition", "SPC", DB.BCLib.Count+1);
+            BoundaryCondition NewBC;
+            if (DB.BCLib.Count != 0)
+            {
+                NewBC = new BoundaryCondition("New Boundary Condition", "SPC", DB.BCLib.Last().Value.ID + 1);
+               
+            }
+            else
+            {
+                NewBC = new BoundaryCondition("New Boundary Condition", "SPC", 1);
+            }
             NewBC.Initialize();
             DB.BCLib.Add(NewBC.ID, NewBC);
 
@@ -615,7 +632,7 @@ namespace STAN_PrePost
                     int ID = int.Parse(Fun.Between(label, "ID ", ":"));
 
                     // Add new Mat Box to PropertyBox
-                    BOX_Mat NewBox = new BOX_Mat(DB.MatLib[ID], Tree);
+                    BOX_Mat NewBox = new BOX_Mat(DB.MatLib[ID], DB, Tree);
                     PropertyBox.Children.Add(NewBox);
                 }
 
